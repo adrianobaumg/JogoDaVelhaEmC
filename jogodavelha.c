@@ -7,7 +7,7 @@
         {'V', 'V', 'V'}
     };
     
-void tabuleiro (){ //mostra as coordenadas possiveis
+void duda (){ //mostra as coordenadas possiveis
     printf("==coordenadas==\n 0 0 | 0 1 | 0 2\n 1 0 | 1 1 | 1 2\n 2 0 | 2 1 | 2 2\n===============\n");
 }
 
@@ -94,7 +94,7 @@ int main (){
     int end = 0;
     char sair;
 
-    tabuleiro();
+    duda();
 
     for (end=0;end==0;){ //for para controlar quantas vezes o usuario quer jogar
         while (controlador>0){ //executa a pardida
@@ -125,7 +125,7 @@ int main (){
         controlador = 9;
         jogador=0;
         venceu=0;
-        tabuleiro();
+        duda();
         break;}
 
     case 'r': {
@@ -133,7 +133,7 @@ int main (){
         controlador = 9;
         jogador = 0;
         venceu=0;
-        tabuleiro();
+        duda();
         break;}
     
     default: {
