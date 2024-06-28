@@ -7,7 +7,7 @@
         {'V', 'V', 'V'}
     };
     
-void duda (){ //mostra as coordenadas possiveis
+void tabuleiro (){ //mostra as coordenadas possiveis
     printf("==coordenadas==\n 0 0 | 0 1 | 0 2\n 1 0 | 1 1 | 1 2\n 2 0 | 2 1 | 2 2\n===============\n");
 }
 
@@ -68,10 +68,10 @@ void vitoria(){
         }// for
 }
 
-void placa (){ //mostra o placar
-    printf("\n===========PLACAR===========\n");
-    printf("Jogador 0: %d Jogador 1: %d Velha: %d", placar[0],placar[1], placar[2]); 
-    printf("\n============================\n");
+void placa (int numjog){ //mostra o placar
+    printf("\n=====================PLACAR=====================\n");
+    printf("Jogador 0: %d Jogador 1: %d Velha: %d || Jogos Totais: %d", placar[0],placar[1], placar[2], numjog); 
+    printf("\n================================================\n");
 }
 void jogar(){ //executa as ações do jogo com base em qual jogador é
 
@@ -89,12 +89,21 @@ void jogar(){ //executa as ações do jogo com base em qual jogador é
     }
 }
 
+void novo_jogo (int numjog) {
+    limpar();
+    controlador = 9;
+    if (numjog%2 != 0){
+        jogador = 1;
+    } else {jogador=0;}    
+    venceu=0;
+    tabuleiro();
+}
 
 int main (){
-    int end = 0;
+    int end = 0, numerojogos=0;
     char sair;
 
-    duda();
+    tabuleiro();
 
     for (end=0;end==0;){ //for para controlar quantas vezes o usuario quer jogar
         while (controlador>0){ //executa a pardida
@@ -114,26 +123,19 @@ int main (){
         printf("\n===EMPATE, JOGUEM MELHOR!===\n");
         placar[2]++;
     }
-    placa();
+    numerojogos++;
+    placa(numerojogos);
     printf("\nDigite R para jogar novamente ou S para sair:");
     scanf(" %c", &sair);
 
     switch (sair)
     {
     case 'R': {
-        limpar();
-        controlador = 9;
-        jogador=0;
-        venceu=0;
-        duda();
+        novo_jogo(numerojogos);
         break;}
 
     case 'r': {
-        limpar();
-        controlador = 9;
-        jogador = 0;
-        venceu=0;
-        duda();
+        novo_jogo(numerojogos);
         break;}
     
     default: {
